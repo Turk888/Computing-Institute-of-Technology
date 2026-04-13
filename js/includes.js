@@ -1,6 +1,5 @@
 (function () {
   const path = window.location.pathname;
-  // Improved subdir detection: checks if the current path is inside any known subdirectory
   const subdirs = ['courses']; 
   const isSubdir = subdirs.some(dir => path.includes('/' + dir + '/'));
   const base = isSubdir ? '../' : '';
@@ -15,7 +14,8 @@
     setupScrollAnimations();
   }
 
-  function loadFragment(url, targetId, callback) {
+  function loadFragment(url, targetId) {
+    // Start fetching fragments as early as possible
     fetch(url)
       .then(r => {
         if (!r.ok) throw new Error('Failed: ' + url);
@@ -24,19 +24,29 @@
       .then(html => {
         const processed = html.replace(/\{\{BASE\}\}/g, base);
         const el = document.getElementById(targetId);
-        if (el) el.outerHTML = processed;
+        if (el) {
+          el.innerHTML = ''; // Clear placeholder if needed (though outerHTML replaces)
+          el.outerHTML = processed;
+        }
         loadedCount++;
         if (loadedCount === TOTAL) onAllLoaded();
-        if (callback) callback();
       })
       .catch(err => console.warn(err));
   }
 
-  // Load header & footer
-  loadFragment(base + 'includes/header.html', 'site-header');
-  loadFragment(base + 'includes/footer.html', 'site-footer');
+  // Use DOMContentLoaded to start as soon as DOM is ready, but before full page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      loadFragment(base + 'includes/header.html', 'site-header');
+      loadFragment(base + 'includes/footer.html', 'site-footer');
+    });
+  } else {
+    loadFragment(base + 'includes/header.html', 'site-header');
+    loadFragment(base + 'includes/footer.html', 'site-footer');
+  }
 
   // --- Setup Functions ---
+  // ... (setupHamburger, setupNavHighlight, setupTheme, setupScrollAnimations unchanged)
 
   function setupHamburger() {
     const hamburger = document.querySelector('.hamburger');
