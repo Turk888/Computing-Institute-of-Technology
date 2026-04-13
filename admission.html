@@ -1,32 +1,24 @@
-  <!-- Resource Hints & Preconnect -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computing Institute of Technology</title>
+  <link rel="icon" type="image/png" href="Gallery/Logo.png">
+<!-- Resource Hints & Preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
 
-  <!-- Preload Critical Assets -->
-  <link rel="preload" href="css/style.css" as="style">
-  <link rel="preload" href="Gallery/Logo.png" as="image" fetchpriority="high">
-  <link rel="preload" href="includes/header.html" as="fetch" crossorigin>
-  <link rel="preload" href="includes/footer.html" as="fetch" crossorigin>
+<!-- Preload Critical Assets -->
+<link rel="preload" href="css/style.css" as="style">
+<link rel="preload" href="Gallery/Logo.png" as="image" fetchpriority="high">
+<link rel="preload" href="includes/header.html" as="fetch" crossorigin>
+<link rel="preload" href="includes/footer.html" as="fetch" crossorigin>
 
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:site_name" content="CIT Muzaffarabad">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://turk888.github.io/Computing-Institute-of-Technology/admission.html">
-  <meta property="og:title" content="Online Admission | Computing Institute of Technology">
-  <meta property="og:description" content="Secure your place at CIT Muzaffarabad. Fill out our online admission form to start your professional IT journey.">
-  <meta property="og:image" content="https://turk888.github.io/Computing-Institute-of-Technology/Gallery/Logo.png">
-  <meta property="og:image:width" content="512">
-  <meta property="og:image:height" content="512">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Online Admission | Computing Institute of Technology">
-  <meta name="twitter:description" content="Secure your place at CIT Muzaffarabad. Fill out our online admission form to start your professional IT journey.">
-  <meta name="twitter:image" content="https://turk888.github.io/Computing-Institute-of-Technology/Gallery/Logo.png">
 <body>
 
 
@@ -37,24 +29,29 @@
     <div class="container text-center animate-fade-up">
       <h1 class="section-title mb-2">Online Admission</h1>
       <p class="mb-4">Fill out the form below to secure your place. We will contact you back via WhatsApp.</p>
-      
-      <div class="card animate-fade-up" style="max-width: 700px; margin: 0 auto; text-align: left;">
-        <form name="admission" method="POST" action="success.html" netlify>
+
+      <div
+        style="max-width: 600px; margin: 0 auto; background-color: var(--surface-color); padding: 3rem 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border: 1px solid var(--border-color); text-align: left;">
+
+        <!-- Netlify Form -->
+        <form name="admission" method="POST" data-netlify="true" action="success.html" netlify>
           <div class="form-group">
             <label class="form-label" for="fullname">Full Name <span style="color: red;">*</span></label>
-            <input type="text" id="fullname" name="fullname" class="form-control" required placeholder="Enter your full name">
+            <input type="text" id="fullname" name="fullname" class="form-control" required
+              placeholder="Enter your full name">
           </div>
-          
+
           <div class="form-group">
             <label class="form-label" for="phone">Phone / WhatsApp Number <span style="color: red;">*</span></label>
             <input type="tel" id="phone" name="phone" class="form-control" required placeholder="03XXXXXXXXX">
           </div>
-          
+
           <div class="form-group">
-            <label class="form-label" for="email">Email Address <span style="color: var(--text-muted); font-weight: normal;">(Optional)</span></label>
+            <label class="form-label" for="email">Email Address <span
+                style="color: var(--text-muted); font-weight: normal;">(Optional)</span></label>
             <input type="email" id="email" name="email" class="form-control" placeholder="you@example.com">
           </div>
-          
+
           <div class="form-group">
             <label class="form-label" for="course">Course Selection <span style="color: red;">*</span></label>
             <select id="course" name="course" class="form-control" required>
@@ -87,7 +84,7 @@
               </optgroup>
             </select>
           </div>
-          
+
           <div class="form-group">
             <label class="form-label" for="education">Education Level <span style="color: red;">*</span></label>
             <select id="education" name="education" class="form-control" required>
@@ -99,16 +96,19 @@
               <option value="Other">Other</option>
             </select>
           </div>
-          
+
           <div class="form-group">
-            <label class="form-label" for="message">Message / Notes <span style="color: var(--text-muted); font-weight: normal;">(Optional)</span></label>
-            <textarea id="message" name="message" class="form-control" rows="4" placeholder="Any questions or extra information?"></textarea>
+            <label class="form-label" for="message">Message / Notes <span
+                style="color: var(--text-muted); font-weight: normal;">(Optional)</span></label>
+            <textarea id="message" name="message" class="form-control" rows="4"
+              placeholder="Any questions or extra information?"></textarea>
           </div>
-          
+
           <div data-netlify-recaptcha="true" class="mb-3"></div>
-          
-          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem; margin-top: 1rem;">Submit Application</button>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Application</button>
         </form>
+
       </div>
     </div>
   </section>
@@ -119,4 +119,5 @@
   <script src="js/includes.js"></script>
 
 </body>
+
 </html>
