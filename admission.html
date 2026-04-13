@@ -22,10 +22,8 @@
       <h1 class="section-title mb-2">Online Admission</h1>
       <p class="mb-4">Fill out the form below to secure your place. We will contact you back via WhatsApp.</p>
       
-      <div style="max-width: 600px; margin: 0 auto; background-color: var(--surface-color); padding: 3rem 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border: 1px solid var(--border-color); text-align: left;">
-        
-        <!-- Netlify Form -->
-        <form name="admission" method="POST" data-netlify="true" action="success.html">
+      <div class="card animate-fade-up" style="max-width: 700px; margin: 0 auto; text-align: left;">
+        <form name="admission" method="POST" action="success.html" netlify>
           <div class="form-group">
             <label class="form-label" for="fullname">Full Name <span style="color: red;">*</span></label>
             <input type="text" id="fullname" name="fullname" class="form-control" required placeholder="Enter your full name">
@@ -93,9 +91,8 @@
           
           <div data-netlify-recaptcha="true" class="mb-3"></div>
           
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Application</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem; margin-top: 1rem;">Submit Application</button>
         </form>
-        
       </div>
     </div>
   </section>
