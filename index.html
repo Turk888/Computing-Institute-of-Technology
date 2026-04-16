@@ -216,7 +216,8 @@
           slide.style.backgroundSize = 'cover';
           slide.style.backgroundRepeat = 'no-repeat';
           slide.style.opacity = index === 0 ? '1' : '0';
-          slide.style.transition = 'opacity 1.5s ease-in-out';
+          slide.style.zIndex = index === 0 ? '1' : '0';
+          slide.style.transition = 'opacity 2s ease-in-out';
           slide.style.willChange = 'opacity';
           sliderContainer.appendChild(slide);
           return { element: slide, url: imgUrl };
@@ -240,9 +241,25 @@
 
         let currentIndex = 0;
         setInterval(() => {
-          slides[currentIndex].element.style.opacity = '0';
+          const previousIndex = currentIndex;
           currentIndex = (currentIndex + 1) % slides.length;
-          slides[currentIndex].element.style.opacity = '1';
+          
+          const prevSlide = slides[previousIndex].element;
+          const nextSlide = slides[currentIndex].element;
+
+          // Next slide moves to top and begins fading in
+          nextSlide.style.zIndex = '1';
+          nextSlide.style.opacity = '1';
+          
+          // Previous slide moves behind, maintaining its opacity during the fade
+          prevSlide.style.zIndex = '0';
+          
+          // Once fade is complete, hide previous slide completely
+          setTimeout(() => {
+            if (previousIndex !== currentIndex) {
+              prevSlide.style.opacity = '0';
+            }
+          }, 2000); // Matches the 2s transition
         }, 5000);
       }
     });
