@@ -239,6 +239,12 @@
         const observer = new MutationObserver(() => updateGradients());
         observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
+        // Preload slider images to prevent blank loading time on first rotation
+        images.forEach(imgUrl => {
+          const img = new Image();
+          img.src = imgUrl;
+        });
+
         let currentIndex = 0;
         setInterval(() => {
           const previousIndex = currentIndex;
