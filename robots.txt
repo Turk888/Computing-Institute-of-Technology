@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://turk888.github.io/Computing-Institute-of-Technology/sitemap.xml
+Sitemap: https://citajk.com/sitemap.xml
+
