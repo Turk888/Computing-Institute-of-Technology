@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Computing Institute of Technology (CIT) is a professional TVETA-style computer training institute in Muzaffarabad offering practical IT education and skill development programs.">
+  <meta name="description" content="Computing Institute of Technology (CIT) is a professional TEVTA-style computer training institute in Muzaffarabad offering practical IT education and skill development programs.">
   <title>Computing Institute of Technology | Learn Today, Lead Tomorrow</title>
   <link rel="icon" type="image/png" href="Gallery/Logo.png">
   
@@ -12,7 +12,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://turk888.github.io/Computing-Institute-of-Technology/">
   <meta property="og:title" content="Computing Institute of Technology | Muzaffarabad">
-  <meta property="og:description" content="Premium TVETA & NAVTTC style computer training. Learn Web Dev, Graphic Design, Digital Marketing and more at CIT Muzaffarabad.">
+  <meta property="og:description" content="Premium TEVTA & NAVTTC style computer training. Learn Web Dev, Graphic Design, Digital Marketing and more at CIT Muzaffarabad.">
   <meta property="og:image" content="https://turk888.github.io/Computing-Institute-of-Technology/Gallery/campus-7.jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -21,7 +21,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://turk888.github.io/Computing-Institute-of-Technology/">
   <meta name="twitter:title" content="Computing Institute of Technology | Muzaffarabad">
-  <meta name="twitter:description" content="Premium TVETA & NAVTTC style computer training. Learn Web Dev, Graphic Design, Digital Marketing and more at CIT Muzaffarabad.">
+  <meta name="twitter:description" content="Premium TEVTA & NAVTTC style computer training. Learn Web Dev, Graphic Design, Digital Marketing and more at CIT Muzaffarabad.">
   <meta name="twitter:image" content="https://turk888.github.io/Computing-Institute-of-Technology/Gallery/campus-7.jpeg">
 
   <!-- Resource Hints & Preconnect -->
@@ -50,7 +50,7 @@
     <div class="container animate-fade-up">
       <span class="badge badge-accent mb-2">3 Years of Educational Excellence</span>
       <h1>Computing Institute of Technology</h1>
-      <p>Learn Today, Lead Tomorrow. Start your journey into the digital world with professional computer skills training at Muzaffarabad's highly registered, premium TVETA-style institute.</p>
+      <p>Learn Today, Lead Tomorrow. Start your journey into the digital world with professional computer skills training at Muzaffarabad's highly registered, premium TEVTA-style institute.</p>
       <div class="hero-btns">
         <a href="courses.html" class="btn btn-primary">View Courses</a>
         <a href="admission.html" class="btn btn-secondary">Apply Now</a>
@@ -113,7 +113,7 @@
       <div class="animate-fade-up">
         <h2 class="section-title mb-3">Why Choose CIT?</h2>
         <ul class="check-list">
-          <li><strong>TVETA & NAVTTC Style Registered</strong> – recognized credibility.</li>
+          <li><strong>TEVTA & NAVTTC Style Registered</strong> – recognized credibility.</li>
           <li><strong>Experienced Instructors</strong> – learn from industry professionals.</li>
           <li><strong>Practical Learning</strong> – hands-on projects and real-world scenarios.</li>
           <li><strong>Modern Computer Labs</strong> – equipped with the latest technology.</li>
@@ -175,5 +175,77 @@
   <div id="site-footer"></div>
 
   <script src="js/includes.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hero = document.querySelector('.hero');
+      if (hero) {
+        const images = [
+          'Gallery/campus-7.jpeg',
+          'Gallery/campus-12.jpeg',
+          'Gallery/campus-3.jpeg',
+          'Gallery/campus-10.jpeg'
+        ];
+        
+        hero.style.backgroundImage = 'none'; // Clear static bg
+        hero.style.position = 'relative';
+        hero.style.overflow = 'hidden';
+        
+        const container = hero.querySelector('.container');
+        if (container) {
+          container.style.position = 'relative';
+          container.style.zIndex = '2';
+        }
+
+        const sliderContainer = document.createElement('div');
+        sliderContainer.style.position = 'absolute';
+        sliderContainer.style.top = '0';
+        sliderContainer.style.left = '0';
+        sliderContainer.style.width = '100%';
+        sliderContainer.style.height = '100%';
+        sliderContainer.style.zIndex = '1';
+        hero.insertBefore(sliderContainer, hero.firstChild);
+
+        const slides = images.map((imgUrl, index) => {
+          const slide = document.createElement('div');
+          slide.style.position = 'absolute';
+          slide.style.top = '0';
+          slide.style.left = '0';
+          slide.style.width = '100%';
+          slide.style.height = '100%';
+          slide.style.backgroundPosition = 'center';
+          slide.style.backgroundSize = 'cover';
+          slide.style.backgroundRepeat = 'no-repeat';
+          slide.style.opacity = index === 0 ? '1' : '0';
+          slide.style.transition = 'opacity 1.5s ease-in-out';
+          slide.style.willChange = 'opacity';
+          sliderContainer.appendChild(slide);
+          return { element: slide, url: imgUrl };
+        });
+
+        const updateGradients = () => {
+          const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+          slides.forEach(slide => {
+            if (isDark) {
+              slide.element.style.backgroundImage = `linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 58, 138, 0.7)), url('${slide.url}')`;
+            } else {
+              slide.element.style.backgroundImage = `linear-gradient(135deg, rgba(13, 43, 94, 0.7), rgba(0, 79, 176, 0.6)), url('${slide.url}')`;
+            }
+          });
+        };
+
+        updateGradients();
+
+        const observer = new MutationObserver(() => updateGradients());
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+        let currentIndex = 0;
+        setInterval(() => {
+          slides[currentIndex].element.style.opacity = '0';
+          currentIndex = (currentIndex + 1) % slides.length;
+          slides[currentIndex].element.style.opacity = '1';
+        }, 5000);
+      }
+    });
+  </script>
 </body>
 </html>

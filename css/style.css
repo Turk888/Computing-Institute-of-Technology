@@ -315,14 +315,21 @@ header {
 /* Hero Section */
 .hero {
   padding: 8rem 0;
-  background: linear-gradient(135deg, rgba(13, 43, 94, 0.95), rgba(0, 79, 176, 0.85)), url('../Gallery/campus-7.jpeg') center/cover;
+  background-image: linear-gradient(135deg, rgba(13, 43, 94, 0.7), rgba(0, 79, 176, 0.6)), url('../Gallery/campus-7.jpeg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   color: #fff;
   text-align: center;
   position: relative;
+  transition: background-image 1s ease-in-out;
 }
 
 [data-theme='dark'] .hero {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 58, 138, 0.9)), url('../Gallery/campus-7.jpeg') center/cover;
+  background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 58, 138, 0.7)), url('../Gallery/campus-7.jpeg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .hero h1 {
